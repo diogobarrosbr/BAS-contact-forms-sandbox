@@ -89,12 +89,31 @@
     // Simulated submit — replace with real endpoint as needed
     btnSubmit.classList.add('loading');
 
-    setTimeout(() => {
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+    const webhookUrl = 'https://flow.nics.unicamp.br/webhook-test/78662af3-be1c-4c60-8330-d93e8ddd7309';
+    
+    fetch(webhookUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    }).then(response => {
+      if (response.ok) {
+        console.log('Submission response:', response);
+        btnSubmit.classList.remove('loading');
+        formBody.style.display = 'none';
+        successOver.classList.add('visible');
+        successOver.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+      else {
+        console.error('Submission failed:', response);
+      }
+    })
+    .catch(err => {
+      console.error('Submission error:', err);
+      alert('Ocorreu um erro ao enviar o formulário. Por favor, tente novamente.');
       btnSubmit.classList.remove('loading');
-      formBody.style.display = 'none';
-      successOver.classList.add('visible');
-      successOver.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }, 1400);
+    });
   });
 
   /* ── Reset ───────────────────────────────────────────────────── */
