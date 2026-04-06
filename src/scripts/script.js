@@ -91,6 +91,8 @@
 
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
+    data.data_hora_envio = new Date().toISOString();
+    
     const webhookUrl = 'https://flow.nics.unicamp.br/webhook-test/78662af3-be1c-4c60-8330-d93e8ddd7309';
     
     fetch(webhookUrl, {
