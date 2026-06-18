@@ -124,6 +124,19 @@
               </div>
             </div>
 
+            <!-- Canal de preferência -->
+            <div class="field">
+              <label for="preferencia_contato">Como prefere ser contatado? <span class="req" aria-hidden="true">*</span></label>
+              <div class="select-wrap">
+                <select id="preferencia_contato" name="preferencia_contato" required>
+                  <option value="" disabled selected>Escolha uma opção</option>
+                  <option value="email">E-mail</option>
+                  <option value="whatsapp">WhatsApp</option>
+                </select>
+              </div>
+              <span class="field-error" id="err-preferencia-contato">Selecione sua preferência de contato.</span>
+            </div>
+
             <!-- Como nos conheceu -->
             <div class="field">
               <label for="origem">Como você nos conheceu? <span class="req" aria-hidden="true">*</span></label>
