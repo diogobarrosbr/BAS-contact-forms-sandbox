@@ -76,11 +76,12 @@
     const validNome   = validateNome();
     const validPhone  = validatePhone();
     const validEmail  = validateEmail();
+    const validPrefContato = validateSelect('preferencia_contato', 'err-preferencia-contato');
     const validOrigem = validateSelect('origem', 'err-origem');
     const validInvest = validateSelect('investimento', 'err-investimento');
     const validDescr  = validateDescricao();
 
-    if (!(validNome && validPhone && validEmail && validOrigem && validInvest && validDescr)) {
+    if (!(validNome && validPhone && validEmail && validPrefContato && validOrigem && validInvest && validDescr)) {
       const firstErr = form.querySelector('[aria-invalid="true"]');
       if (firstErr) firstErr.scrollIntoView({ behavior: 'smooth', block: 'center' });
       return;
